@@ -1,6 +1,7 @@
 .DS_Store
 *.swp
 Development.md
+app/js/
 node_modules/
 typings/
 public/
