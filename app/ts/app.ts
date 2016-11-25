@@ -1,5 +1,8 @@
 /// <reference path='../../typings/index.d.ts' />
 
+import 'reflect-metadata';
+import 'zone.js';
+
 import { bootstrap }                 from 'angular2/platform/browser';
 import { Component, enableProdMode } from 'angular2/core';
 import { CORE_DIRECTIVES }           from 'angular2/common';
