@@ -3,12 +3,13 @@
 import 'reflect-metadata';
 import 'zone.js';
 
-import { bootstrap }                 from 'angular2/platform/browser';
-import { Component, enableProdMode } from 'angular2/core';
-import { CORE_DIRECTIVES }           from 'angular2/common';
+import { platformBrowserDynamic }              from '@angular/platform-browser-dynamic';
+import { BrowserModule }                       from '@angular/platform-browser';
+import { Component, NgModule, enableProdMode } from '@angular/core';
 
-import NavigationBar from './navigation/navigationBar';
+import { NavigationBarModule } from './navigationBar/navigationBar.module';
 
+// production mode
 enableProdMode();
 
 @Component({
@@ -16,7 +17,7 @@ enableProdMode();
     template: `<h1>{{message}}</h1>`
 })
 class Wellcome {
-    private message = 'Wellcome to Atsusi Lab !!';
+    private message = 'Wellcome to Atsushi Lab !!';
 }
 
 @Component({
@@ -24,10 +25,17 @@ class Wellcome {
     template: `
     <navigation-bar></navigation-bar>
     <wellcome></wellcome>
-    `,
-    directives: [CORE_DIRECTIVES, Wellcome, NavigationBar]
+    `
 })
-class App {
+class AppComponent {
 }
 
-bootstrap(App);
+@NgModule({
+    imports: [BrowserModule, NavigationBarModule],
+    declarations: [AppComponent, Wellcome],
+    bootstrap: [AppComponent]
+})
+class AppModule {
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule);

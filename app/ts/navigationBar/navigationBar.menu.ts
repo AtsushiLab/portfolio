@@ -1,4 +1,5 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
+import { Menu }      from './shared/menu';
 
 @Component({
     selector: 'navigation-menu',
@@ -12,10 +13,10 @@ import { Component } from 'angular2/core';
         </div>
     `
 })
-export default class NavigationMenu {
-    private menus = [
-        { href: "one",   title: "Portfolio" },
-        { href: "two",   title: "Tech" },
-        { href: "three", title: "Other" },
+export class NavigationMenu {
+    private menus: Menu[] = [
+        new Menu("Portfolio", "one"),
+        new Menu("Tech", "two"),
+        new Menu("Other", "three")
     ];
 }

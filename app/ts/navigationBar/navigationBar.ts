@@ -1,6 +1,4 @@
-import { Component }   from 'angular2/core';
-import NavigationTitle from './navigationTitle';
-import NavigationMenu  from './navigationMenu';
+import { Component }   from '@angular/core';
 
 @Component({
     selector: 'navigation-bar',
@@ -11,8 +9,7 @@ import NavigationMenu  from './navigationMenu';
                 <navigation-menu></navigation-menu>
             </div>
         </nav>
-    `,
-    directives: [NavigationTitle, NavigationMenu]
+    `
 })
-export default class NavigationBar {
+export class NavigationBar {
 }

@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'navigation-title',
@@ -8,6 +8,6 @@ import { Component } from 'angular2/core';
         </div>
     `
 })
-export default class NavigationTitle {
+export class NavigationTitle {
     private title = "Atsushi Labo";
 }
