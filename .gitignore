@@ -2,6 +2,7 @@
 *.swp
 Development.md
 app/js/
+app/css/
 node_modules/
 typings/
 public/
