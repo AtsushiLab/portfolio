@@ -1,6 +1,6 @@
 module.exports = {
     // entry point
-    entry: './app/js/app.js',
+    entry: './app/ts/app.ts',
     
     // output file name
     output: {
@@ -15,13 +15,18 @@ module.exports = {
         extensions: ['', '.webpack.js', 'web.js', '.js', '.ts']
     },
 
+    devtool: 'source-map',
+
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.ts$/,
                 // set prune file or directory
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'ts-loader',
+                query: {
+                    configFileName: 'tsconfig.json' 
+                }
             }
         ] 
     }
