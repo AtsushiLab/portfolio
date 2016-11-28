@@ -1,0 +1,12 @@
+.navigation__menu {
+  display: inline-block;
+  
+  &__item {
+    text-decoration: none;
+  }
+}
+
+ul {
+  display: inline-block;
+  list-style: none;
+}
