@@ -8,8 +8,10 @@ import { BrowserModule }                               from '@angular/platform-b
 import { Component, NgModule, enableProdMode }         from '@angular/core';
 import { HostListener, ElementRef, ViewEncapsulation } from '@angular/core';
 import { trigger, state, style, transition, animate }  from '@angular/core';
-import { NavigationBarModule }                         from './navigationBar/navigationBar.module';
-impoer { ScrollService }                               from './shared/scroll.service';
+
+import { NavigationBarModule } from './navigationBar/navigationBar.module';
+import { ScrollService }       from './shared/scroll.service';
+import { Color }               from './shared/color';
 
 // production mode
 enableProdMode();
@@ -61,7 +63,7 @@ class Welcome {
 @Component({
     selector: 'body',
     template: `
-        <div [@animateNavigation]="backgroundColorNumber">
+        <div [@animateNavigation]="backgroundColor">
             <navigation-bar></navigation-bar>
             <wellcome></wellcome>
         </div>
@@ -69,52 +71,34 @@ class Welcome {
     providers: [ScrollService],
     animations: [
         trigger('animateNavigation', [
-            state('first', style({
+            state(Color.Dark, style({
                 'background-color': '#222222'
             })),
-            state('second', style({
-                'background-color': '#6fb536'
-            })),
-            state('third', style({
+            state(Color.Navy, style({
                 'background-color': '#3b5998'
             })),
-            transition('first => second', animate('250ms linear 0')),
-            transition('second => third', animate('250ms linear 0')),
-            transition('third => second', animate('250ms linear 0')),
-            transition('second => first', animate('250ms linear 0'))
+            state(Color.Green, style({
+                'background-color': '#6fb536'
+            })),
+            transition(Color.Dark  + ' => ' + Color.Navy,  animate('250ms linear 0')),
+            transition(Color.Navy  + ' => ' + Color.Green, animate('250ms linear 0')),
+            transition(Color.Green + ' => ' + Color.Navy,  animate('250ms linear 0')),
+            transition(Color.Navy  + ' => ' + Color.Dark,  animate('250ms linear 0'))
         ])
     ]
 })
 class AppComponent {
 
     private element: ElementRef;
-    private backgroundColorNumber: string = 'first';
+    private backgroundColor: string = Color.Dark;
 
-    private testScrollService: ScrollService;
+    private scrollService: ScrollService;
 
     constructor(elementRef: ElementRef) {
         this.element = elementRef; 
-        this.scrollService = new ScrollService(this.element, {
-            console.log('hello, world');
+        this.scrollService = new ScrollService(this.element, (str: string) => {
+            this.backgroundColor = str;
         });
-    }
-
-    @HostListener('document:scroll', ['$event'])
-    private onScroll(event: any) {
-    
-        const scrollTop = this.element.nativeElement.scrollTop;
-
-        if (scrollTop < 300) {
-            this.backgroundColorNumber = 'first';
-        }
-
-        if (scrollTop >= 300 && scrollTop < 500) {
-            this.backgroundColorNumber = 'second';
-        }
-
-        if (scrollTop >= 500 && scrollTop < 700) {
-            this.backgroundColorNumber = 'third';
-        }
     }
 }
 
