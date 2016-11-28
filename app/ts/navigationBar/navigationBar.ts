@@ -1,33 +1,24 @@
 import { Component, HostListener, ElementRef, ViewContainerRef } from '@angular/core';
 import { trigger, state, style, transition, animate }            from '@angular/core';
+import { Color }                                                 from '../shared/color';
+import { AnimationTrigger }                                      from './navigationBar.animation.trigger';
 
 @Component({
     selector: 'navigation-bar',
     template: `
-        <nav id="topNav" class="navigation" [@animateNavigation]="isAnimated">
+        <nav id="topNav" class="navigation" [@animateNavigation]="backgroundColor">
             <div class="container-fluid">
                 <navigation-title></navigation-title>
                 <navigation-menu></navigation-menu>
             </div>
         </nav>
     `,
-    animations: [
-        trigger('animateNavigation', [
-            state('false', style({
-                'background-color': 'rgba(255, 255, 255, 0)'
-            })),
-            state('true', style({
-                'background-color': 'rgba(23, 23, 23, 0.75)'
-            })),
-            transition('0 => 1', animate('400ms linear 0')),
-            transition('1 => 0', animate('400ms linear 0'))
-        ])
-    ]
+    animations: [AnimationTrigger]
 })
 export class NavigationBar {
 
     private element: ElementRef;
-    private isAnimated: boolean = false;
+    private backgroundColor: string = Color.Dark;
 
     // ElementRef is DOM access
     constructor(elementRef: ElementRef, viewContainerRef: ViewContainerRef) {
@@ -40,14 +31,10 @@ export class NavigationBar {
         const scroll: number = 500;
 
         if (this.element.nativeElement.offsetParent.scrollTop >= scroll) {
-            if (!this.isAnimated) this.changeIsAnimatedState();
+            this.backgroundColor = Color.Dark;
         } else {
-            if (this.isAnimated) this.changeIsAnimatedState();
+            this.backgroundColor = Color.Navy;
         }
-    }
-
-    private changeIsAnimatedState() {
-        this.isAnimated = !this.isAnimated;
     }
 
 }
