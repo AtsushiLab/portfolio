@@ -17,10 +17,11 @@ export class ScrollService {
         window.addEventListener('scroll', this.onScroll);
     }
 
-    private onScroll() {
+    private onScroll = () => {
 
         const height    = window.parent.screen.height
-        const scrollTop = this.element.nativeElement.ownerDocument.activeElement.scrollTop;
+        console.log(this.element);
+        const scrollTop = this.element.nativeElement.ownerDocument.body.scrollTop;
 
         if (scrollTop < height / ScrollService.CountOfColor) {
             this.changeColorHandler(Color.Dark);
