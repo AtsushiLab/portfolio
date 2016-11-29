@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya:700|Ubuntu:400|Dancing+Script:700);
 
-html,
+html
 body {
-  height: 100%;
+  height: 100vh;
   margin: 0px;
   background-color: #262626;
 }
@@ -15,9 +15,22 @@ ul {
   padding: 0px;
 }
 
+/*
+ * app
+ */
+
 app {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+
+/*
+ * top
+ */
+
+.top {
+  height: 100vh;
+  width: 100vw;
 }
 
 /*
