@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Alegreya:700|Ubuntu:400|Dancing+Script:700);
+
+html,
+body {
+  height: 100%;
+  margin: 0px;
+  background-color: #262626;
+}
+
+h1 {
+  margin: 0px;
+}
+
+ul {
+  padding: 0px;
+}
+
+app {
+  height: 100%;
+  width: 100%;
+}
+
+/*
+ * navigation
+ */
+
+.navigation {
+  position: fixed;
+  right: 0px;
+  left: 0px;
+  border-bottom: 2px;
+  border-color: #1c1c1c;
+
+  a {
+    font-family: Ubuntu, "Helvetica Neue", Arial, sans-serif;
+    text-decoration: none;
+    color: #ffffff;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+
+    &:hover, &:focus {
+      color: #c93a48;
+      outline: 0;
+    }
+  }
+}
+
+
+/*
+ * navigation title component
+ */
+
+.navigation__title {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+
+/*
+ * navigation menu component
+ */
+
+.navigation__menu {
+  display: inline-block;
+  
+  li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+
+  ul {
+    padding-left: 30px; 
+  }
+}
