@@ -20,7 +20,6 @@ export class ScrollService {
     private onScroll = () => {
 
         const height    = window.parent.screen.height
-        console.log(this.element);
         const scrollTop = this.element.nativeElement.ownerDocument.body.scrollTop;
 
         if (scrollTop < height / ScrollService.CountOfColor) {
