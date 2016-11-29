@@ -1,31 +1,32 @@
 import { Injectable, HostListener, ElementRef } from '@angular/core';
 import { Color }                                from './color';
 
+declare type ChangeColorHandler = (color: string) => void;
+
 @Injectable()
 export class ScrollService {
 
-//    type UpdateStateHandler: () => string;
     private element: ElementRef;
-    public updateStateHandler: (str: string) => void;
+    public changeColorHandler: ChangeColorHandler;
 
-    constructor(elementRef: ElementRef, updateStateHandler: (str: string) => void)  {
+    constructor(elementRef: ElementRef, changeColorHandler: ChangeColorHandler)  {
         this.element            = elementRef;
-        this.updateStateHandler = updateStateHandler;
+        this.changeColorHandler = changeColorHandler;
 
         window.addEventListener('scroll', (event) => {
 
             const scrollTop = this.element.nativeElement.scrollTop;
 
             if (scrollTop < 300) {
-                this.updateStateHandler(Color.Dark);
+                this.changeColorHandler(Color.Dark);
             }
 
             if (scrollTop >= 300 && scrollTop < 500) {
-                this.updateStateHandler(Color.Navy);
+                this.changeColorHandler(Color.Navy);
             }
 
             if (scrollTop >= 500 && scrollTop < 700) {
-                this.updateStateHandler(Color.Green);
+                this.changeColorHandler(Color.Green);
             }
         });
     }
