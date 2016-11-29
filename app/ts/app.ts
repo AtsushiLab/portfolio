@@ -8,6 +8,7 @@ import { BrowserModule }                                   from '@angular/platfo
 import { Component, NgModule, enableProdMode, ElementRef } from '@angular/core';
 
 import { NavigationBarModule } from './navigationBar/navigationBar.module';
+import { TopModule }           from './top/top.module';
 import { ScrollService }       from './shared/scroll.service';
 import { Color }               from './shared/color';
 import { AnimationTrigger }    from './app.animation.trigger';
@@ -64,6 +65,7 @@ class Welcome {
     template: `
         <div [@animateNavigation]="backgroundColor">
             <navigation-bar></navigation-bar>
+            <top></top>
             <wellcome></wellcome>
         </div>
     `,
@@ -86,7 +88,7 @@ class AppComponent {
 }
 
 @NgModule({
-    imports: [BrowserModule, NavigationBarModule],
+    imports: [BrowserModule, NavigationBarModule, TopModule],
     declarations: [AppComponent, Welcome],
     bootstrap: [AppComponent]
 })
