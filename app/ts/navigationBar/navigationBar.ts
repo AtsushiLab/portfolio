@@ -1,7 +1,7 @@
-import { Component, HostListener, ElementRef, ViewContainerRef } from '@angular/core';
-import { trigger, state, style, transition, animate }            from '@angular/core';
-import { Color }                                                 from '../shared/color';
-import { AnimationTrigger }                                      from './navigationBar.animation.trigger';
+import { Component, ElementRef } from '@angular/core';
+import { Color }                 from '../shared/color';
+import { ScrollService }         from '../shared/scroll.service';
+import { AnimationTrigger }      from './navigationBar.animation.trigger';
 
 @Component({
     selector: 'navigation-bar',
@@ -13,28 +13,22 @@ import { AnimationTrigger }                                      from './navigat
             </div>
         </nav>
     `,
+    providers: [ScrollService],
     animations: [AnimationTrigger]
 })
 export class NavigationBar {
 
     private element: ElementRef;
+    private scrollService: ScrollService;
     private backgroundColor: string = Color.Dark;
 
     // ElementRef is DOM access
-    constructor(elementRef: ElementRef, viewContainerRef: ViewContainerRef) {
-        this.element = elementRef;
+    constructor(elementRef: ElementRef) {
+
+        this.element       = elementRef;
+        this.scrollService = new ScrollService(this.element, (color: string) => {
+            this.backgroundColor = color;
+        });
+
     }
-
-    @HostListener('document:scroll', ['$event'])
-    private onScroll(event: any) {
-
-        const scroll: number = 500;
-
-        if (this.element.nativeElement.offsetParent.scrollTop >= scroll) {
-            this.backgroundColor = Color.Dark;
-        } else {
-            this.backgroundColor = Color.Navy;
-        }
-    }
-
 }
