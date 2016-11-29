@@ -3,11 +3,16 @@ import { Color }                                       from '../shared/color';
 
 export const AnimationTrigger = trigger('animateNavigation', [
     state(Color.Dark, style({
-        'background-color': 'rgba(255, 255, 255, 0)'
+        'background-color': 'rgba(34, 34, 34, 0.75)'
     })),
     state(Color.Navy, style({
-        'background-color': 'rgba(23, 23, 23, 0.75)'
+        'background-color': 'rgba(59, 89, 152, 0.75)'
     })),
-    transition(Color.Dark + ' => ' + Color.Navy, animate('400ms linear 0')),
-    transition(Color.Navy + ' => ' + Color.Dark, animate('400ms linear 0'))
-])
+    state(Color.Green, style({
+        'background-color': 'rgba(111, 181, 54, 0.75)'
+    })),
+    transition(Color.Dark  + ' => ' + Color.Navy,  animate('250ms linear 0')),
+    transition(Color.Navy  + ' => ' + Color.Green, animate('250ms linear 0')),
+    transition(Color.Green + ' => ' + Color.Navy,  animate('250ms linear 0')),
+    transition(Color.Navy  + ' => ' + Color.Dark,  animate('250ms linear 0'))
+]);
