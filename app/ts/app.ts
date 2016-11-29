@@ -3,11 +3,9 @@
 import 'reflect-metadata';
 import 'zone.js';
 
-import { platformBrowserDynamic }                      from '@angular/platform-browser-dynamic';
-import { BrowserModule }                               from '@angular/platform-browser';
-import { Component, NgModule, enableProdMode }         from '@angular/core';
-import { HostListener, ElementRef, ViewEncapsulation } from '@angular/core';
-import { trigger, state, style, transition, animate }  from '@angular/core';
+import { platformBrowserDynamic }                          from '@angular/platform-browser-dynamic';
+import { BrowserModule }                                   from '@angular/platform-browser';
+import { Component, NgModule, enableProdMode, ElementRef } from '@angular/core';
 
 import { NavigationBarModule } from './navigationBar/navigationBar.module';
 import { ScrollService }       from './shared/scroll.service';
@@ -75,14 +73,14 @@ class Welcome {
 class AppComponent {
 
     private element: ElementRef;
+    private scrollService: ScrollService;
     private backgroundColor: string = Color.Dark;
 
-    private scrollService: ScrollService;
-
     constructor(elementRef: ElementRef) {
-        this.element = elementRef; 
-        this.scrollService = new ScrollService(this.element, (str: string) => {
-            this.backgroundColor = str;
+
+        this.element       = elementRef; 
+        this.scrollService = new ScrollService(this.element, (color: string) => {
+            this.backgroundColor = color;
         });
     }
 }
