@@ -20,7 +20,7 @@ export class NavigationBar {
 
     private element: ElementRef;
     private scrollService: ScrollService;
-    private backgroundColor: string = Color.Dark;
+    private backgroundColor: string = Color.FlatPink;
 
     // ElementRef is DOM access
     constructor(elementRef: ElementRef) {
