@@ -1,16 +1,6 @@
-import { BrowserModule }                   from '@angular/platform-browser';
-import { Component, NgModule, ElementRef } from '@angular/core';
-
-@Component({
-    selector: 'top',
-    template: `
-        <div class="top">
-            Atsushi Lab
-        </div>
-    `
-})
-export class TopComponent {
-}
+import { BrowserModule }        from '@angular/platform-browser';
+import { NgModule, ElementRef } from '@angular/core';
+import { TopComponent }         from './top';
 
 @NgModule({
     imports: [BrowserModule],
