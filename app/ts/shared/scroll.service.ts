@@ -8,7 +8,7 @@ export class ScrollService {
 
     private element: ElementRef;
     public changeColorHandler: ChangeColorHandler;
-    static readonly CountOfColor: number = 3;
+    static readonly CountOfColor: number = 4;
 
     constructor(elementRef: ElementRef, changeColorHandler: ChangeColorHandler)  {
         this.element            = elementRef;
@@ -23,15 +23,19 @@ export class ScrollService {
         const scrollTop = this.element.nativeElement.ownerDocument.body.scrollTop;
 
         if (scrollTop < height / ScrollService.CountOfColor) {
-            this.changeColorHandler(Color.Dark);
+            this.changeColorHandler(Color.FlatPink);
         }
 
         if (scrollTop >= height / ScrollService.CountOfColor && scrollTop < (height / ScrollService.CountOfColor) * 2) {
-            this.changeColorHandler(Color.Navy);
+            this.changeColorHandler(Color.FlatYellow);
         }
 
-        if (scrollTop >= (height / ScrollService.CountOfColor) * 2 && scrollTop < height) {
-            this.changeColorHandler(Color.Green);
+        if (scrollTop >= (height / ScrollService.CountOfColor) * 2 && scrollTop < (height / ScrollService.CountOfColor) * 3) {
+            this.changeColorHandler(Color.FlatGreen);
+        }
+
+        if (scrollTop >= (height / ScrollService.CountOfColor) * 3 && scrollTop < height) {
+            this.changeColorHandler(Color.FlatBlue);
         }
     }
 

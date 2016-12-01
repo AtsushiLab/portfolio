@@ -1,5 +1,6 @@
 export class Color {
-    static readonly Dark : string = 'dark';
-    static readonly Navy : string = 'navy';
-    static readonly Green: string = 'green';
+    static readonly FlatPink  : string = 'FlatPink';
+    static readonly FlatYellow: string = 'FlatYellow';
+    static readonly FlatGreen : string = 'FlatGreen';
+    static readonly FlatBlue  : string = 'FlatBlue';
 }

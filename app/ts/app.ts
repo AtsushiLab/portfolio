@@ -76,7 +76,7 @@ class AppComponent {
 
     private element: ElementRef;
     private scrollService: ScrollService;
-    private backgroundColor: string = Color.Dark;
+    private backgroundColor: string = Color.FlatPink;
 
     constructor(elementRef: ElementRef) {
 
