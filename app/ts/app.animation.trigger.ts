@@ -3,10 +3,10 @@ import { Color }                                       from './shared/color';
 
 export const AnimationTrigger = trigger('animateNavigation', [
     state(Color.FlatPink, style({
-        'background-color': '#FDC44F'
+        'background-color': '#F58E7E'
     })),
     state(Color.FlatYellow, style({
-        'background-color': '#F58E7E'
+        'background-color': '#FDC44F'
     })),
     state(Color.FlatGreen, style({
         'background-color': '#79D1B0'
