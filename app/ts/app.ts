@@ -65,7 +65,8 @@ class Welcome {
     template: `
         <div [@animateNavigation]="backgroundColor">
             <navigation-bar></navigation-bar>
-            <top></top>
+            <top isFixed="true"></top>
+            <top text="Atsushi Lab"></top>
             <wellcome></wellcome>
         </div>
     `,
