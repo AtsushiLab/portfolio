@@ -1,12 +1,12 @@
-import { Component, ElementRef } from '@angular/core';
-import { Color }                 from '../shared/color';
-import { ScrollService }         from '../shared/scroll.service';
-import { AnimationTrigger }      from './navigationBar.animation.trigger';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Color }                        from '../shared/color';
+import { ScrollService }                from '../shared/scroll.service';
+import { AnimationTrigger }             from './navigationBar.animation.trigger';
 
 @Component({
     selector: 'navigation-bar',
     template: `
-        <nav id="topNav" class="navigation" [@animateNavigation]="backgroundColor">
+        <nav id="topNav" class="navigation" [@animateNavigation]="backgroundColor" [attr.data-color]="backgroundColor">
             <div class="container-fluid">
                 <navigation-title></navigation-title>
                 <navigation-menu></navigation-menu>
@@ -16,11 +16,11 @@ import { AnimationTrigger }      from './navigationBar.animation.trigger';
     providers: [ScrollService],
     animations: [AnimationTrigger]
 })
-export class NavigationBar {
+export class NavigationBar implements OnChanges {
 
     private element: ElementRef;
     private scrollService: ScrollService;
-    private backgroundColor: string = Color.FlatPink;
+    @Input() backgroundColor: string = Color.FlatPink;
 
     // ElementRef is DOM access
     constructor(elementRef: ElementRef) {
@@ -29,6 +29,10 @@ export class NavigationBar {
         this.scrollService = new ScrollService(this.element, (color: string) => {
             this.backgroundColor = color;
         });
+    }
 
+    ngOnChanges(changes: SimpleChanges) {
+        console.log(changes);
+        console.log(changes['backgroundColor'].currentValue);
     }
 }

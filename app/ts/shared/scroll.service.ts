@@ -22,6 +22,8 @@ export class ScrollService {
         const height    = window.parent.screen.height
         const scrollTop = this.element.nativeElement.ownerDocument.body.scrollTop;
 
+        console.log(this.element);
+
         if (scrollTop < height / ScrollService.CountOfColor) {
             this.changeColorHandler(Color.FlatPink);
         }

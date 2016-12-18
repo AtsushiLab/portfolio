@@ -3,9 +3,9 @@
 import 'reflect-metadata';
 import 'zone.js';
 
-import { platformBrowserDynamic }                          from '@angular/platform-browser-dynamic';
-import { BrowserModule }                                   from '@angular/platform-browser';
-import { Component, NgModule, enableProdMode, ElementRef } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule }          from '@angular/platform-browser';
+import { Component, NgModule, enableProdMode, ElementRef, Input } from '@angular/core';
 
 import { NavigationBarModule } from './navigationBar/navigationBar.module';
 import { TopModule }           from './top/top.module';
@@ -19,55 +19,58 @@ enableProdMode();
 @Component({
     selector: `wellcome`,
     template: `
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
-    <h1>{{message}}</h1>
+    <div [attr.data-color]="backgroundColor">
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+        <h1>{{message}}</h1>
+    </div>
     `
 })
 class Welcome {
     private message = 'Welcome !!';
+    @Input() backgroundColor: string = Color.FlatPink;
 }
 
 @Component({
     selector: 'body',
     template: `
         <div [@animateNavigation]="backgroundColor">
-            <navigation-bar></navigation-bar>
+            <navigation-bar [attr.backgroundColor]="backgroundColor"></navigation-bar>
             <top isFixed="true"></top>
             <top text="Atsushi Lab"></top>
-            <wellcome></wellcome>
+            <wellcome [attr.backgroundColor]="backgroundColor"></wellcome>
         </div>
     `,
     providers: [ScrollService],
